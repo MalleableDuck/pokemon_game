@@ -41,7 +41,7 @@ function getPokemon1(e) {
     .catch((err) => {
       pokemon1_selected=0;
       document.querySelector(".pokemonBox1").innerHTML = `
-      <h4>Pokemon not found 😞</h4>
+      <h4>Pokemon not found try to check it's spelling</h4>
       `;
       console.log("Pokemon not found", err);
       show_button();
@@ -78,7 +78,7 @@ function getPokemon2(e) {
     .catch((err) => {
       pokemon2_selected=0;
       document.querySelector(".pokemonBox2").innerHTML = `
-      <h4>Pokemon not found 😞</h4>
+      <h4>Pokemon not found try to check it's spelling</h4>
       `;
       console.log("Pokemon not found", err);
       show_button()
