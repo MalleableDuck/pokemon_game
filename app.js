@@ -59,7 +59,7 @@ function setupDuel(){
   
 }
 
-// Changes health color for player one and player two
+// Changes health colour for player one and player two
 const healthColor = (playerHealth, playerBar) => {
   if (playerHealth < 40 && playerHealth > 20) {
     playerBar.style.backgroundColor = "#cee809";
@@ -70,7 +70,7 @@ const healthColor = (playerHealth, playerBar) => {
   }
 };
 
-// Checks if Charmander or Mewtwo win
+// Checks which player wins
 const checkWinner = (name, playerBar, playerCount) => {
   gameStateText.innerText = `${name} wins! Press restart to play again!`;
   playerBar.style.width = "0%";
@@ -86,12 +86,9 @@ const checkWinner = (name, playerBar, playerCount) => {
   restartBtn.style.display = "block";
 };
 
-// Player One Attacking logic function
 const playerOneAttack = (subtract, missCount, attackName) => {
-  // Gets random number to calculate if it's a miss
-  const randomNumber = Math.floor(Math.random() * missCount) + 1;
+  const randomNumber = Math.floor(Math.random() * missCount) + 1;   // random number for the miss
   if (randomNumber !== 1) {
-    // Subtract health
     playerTwoHealth -= subtract;
     if (playerTwoHealth <= 0) {
       checkWinner(pokemon1, playerTwoHealthBar, playerTwoHealthCount);
@@ -152,8 +149,7 @@ const playerTwoAttack = () => {
 setInterval(() => {
   healthColor(playerOneHealth, playerOneHealthBar);
 }, 500);
-// Setting interval for the game state auto reading text
-const intervalFunction = () => {
+const intervalFunction = () => { // Setting interval for the game state auto reading text
   healthColor(playerTwoHealth, playerTwoHealthBar);
   const interval = setInterval(() => {
     gameStateText.style.display = "block";
@@ -172,7 +168,7 @@ const intervalFunction = () => {
   }, 5004);
 };
 
-// Restart game logic
+// Restart game
 const restartGame = () => {
   playerTwoHealthBar.style.width = `100%`;
   gameStateText.style.display = "none";
@@ -185,10 +181,9 @@ const restartGame = () => {
   playerTwoHealth = Health2;
 };
 
-// Restart button event listener
 restartBtn.addEventListener("click", () => restartGame());
 
-// Player one attack button events
+// attack event
 attackOne.addEventListener("click", () => playerOneAttack(12, 18, playerOneAttacks[0]));
 attackTwo.addEventListener("click", () =>
   playerOneAttack(20, 8, playerOneAttacks[1])
